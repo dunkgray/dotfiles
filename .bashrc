@@ -197,7 +197,34 @@ fi
 
 # git Prompt
 
-. ~/.bash/git-prompt.sh
-export GIT_PS1_SHOWDIRTYSTATE=1
-export PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
-#export PS1='\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\] $(__git_ps1 "(%s) ")\$ '
+if [ -f ~/.bash/git-prompt.sh ]; then
+    . ~/.bash/git-prompt.sh
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
+    #export PS1='\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\] $(__git_ps1 "(%s) ")\$ '
+fi
+
+if [ -f ~/.bash/git-completion.bash ]; then
+    .  ~/.bash/git-completion.bash
+fi
+
+# TODO add this
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# ODC
+dc-dump-product () {
+   local name=${1}
+   local dbname=${2:-"datacube"}
+   local host=${3:-"130.56.244.105"}
+   local port=${4:-6432}
+
+   cat <<EOF | psql --no-psqlrc --quiet -t -h "${host}" -p "${port}" "${dbname}"
+        select definition
+        from agdc.dataset_type
+        where name = '${name}';
+EOF
+}
+
+dc-index-eo3 () {
+    fd odc-metadata.yaml $1 | tar cvf - --files-from=-  | dc-index-from-tar -E dsg547 --eo3 --ignore-lineage --protocol file -
+}
