@@ -2,6 +2,29 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+#  Source global definitions to get the module command defined.
+#  If you remove this from your file and/or you reset the BASH_ENV (or
+#  ENV) variables,  you risk getting "module command not found"
+#  errors from batch jobs.
+
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+system_type=$(uname -s)
+if [ "$system_type" = "Darwin" ]; then
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+      . $(brew --prefix)/etc/bash_completion
+    fi
+    WIFI_SSID=`/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}'`
+
+    # If I'm at work
+    if [ "$WIFI_SSID" = 'GA Staff' ]; then
+        export http_proxy=proxy.inno.lan:3128
+        export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+    fi
+fi
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -16,19 +39,19 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=10000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# Save and reload the history after each command finishes
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -115,3 +138,66 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# The above is from a wsl ubuntu .bashrc
+# below based on Damo
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
+if command_exists module; then
+    module use /g/data/v10/public/modules/modulefiles --append
+fi
+
+if command_exists direnv; then
+    eval "$(direnv hook bash)"
+fi
+
+if [[ $system_type =~ MINGW || $system_type =~ MSYS ]]; then
+    # ssh-pageant
+    # Not able to use file sockets in windows...
+    #eval $(ssh-pageant.exe -r -a "/c/Temp/.ssh-pageant-$USERNAME")
+    # eval $(ssh-pageant)
+    if command_exists ssh-pageant; then
+        eval $(ssh-pageant -r -a "/tmp/.ssh-pageant-$USERNAME")
+    fi
+
+    export PATH=$PATH:/c/msys64/mingw64/bin
+    export GIT_GUI_LIB_DIR=/c/msys64/usr/share/git-gui/lib
+fi
+
+if [ -n "$TMUX" ]; then
+    function refresh-tmux-env-vars {
+        eval $(tmux showenv -s DISPLAY)
+        eval $(tmux showenv -s SSH_AUTH_SOCK)
+    }
+else
+    function refresh-tmux-env-vars { true; }
+fi
+
+function preexec {
+    refresh-tmux-env-vars
+}
+
+
+if [[ `hostname` =~ vdi ]]; then
+    mkdir -p /local/u46/dsg547/tmp/dotcondapkgcache
+    mkdir -p /local/u46/dsg547/tmp/dotcache
+    #export PATH="${PATH}:${HOME}/src/damootils/scripts"
+    export PIP_DOWNLOAD_CACHE=$TMPDIR/pipcache
+    mkdir -p $PIP_DOWNLOAD_CACHE
+fi
+if [[ ! -S ~/.ssh/ssh_auth_sock && -S "$SSH_AUTH_SOCK" ]]; then
+    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+fi
+
+# git Prompt
+
+. ~/.bash/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+export PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
+#export PS1='\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\] $(__git_ps1 "(%s) ")\$ '
