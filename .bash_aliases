@@ -34,3 +34,6 @@ for PATTERN in .git .hg .svn .work; do
 done
 alias grep="grep $grep_options"
 
+alias gadi='ssh -X dsg547@gadi.nci.org.au'
+alias awsnemo='ssh  -i ~/.ssh/id_rsa_nci_cron_ec2 ec2-user@ec2-52-62-73-33.ap-southeast-2.compute.amazonaws.com'
+
