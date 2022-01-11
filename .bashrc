@@ -193,7 +193,44 @@ if [[ `hostname` =~ vdi ]]; then
 fi
 
 if [[ `hostname` =~ gadi ]] && in_interactive_shell; then
-    echo IN
+
+    # This is where you put settings that you'd like in
+    # interactive shells. E.g. prompts, or aliases
+    # The 'module' command offers path manipulation that
+    # will only modify the path if the entry to be added
+    # is not already present. Use these functions instead of e.g.
+    # PATH=${HOME}/bin:$PATH
+
+    prepend_path PATH ${HOME}/bin
+    prepend_path PATH ${HOME}/.local/bin
+
+    export VISUAL=emacs
+    export EDITOR="$VISUAL"
+
+    export LC_ALL=en_AU.UTF-8
+    export LANG=en_AU.UTF-8
+
+    alias cdsand="cd /g/data/u46/users/dsg547/sandbox/"
+    alias cdpldev="cd /g/data/u46/users/dsg547/sandbox/processingDEA/ls_c3_ard_testing/devdb"
+    alias cdqa="cd /g/data/u46/users/dsg547/c3_ard_qa"
+    alias cdss="cd /g/data/u46/users/dsg547/sandbox/dea-ard-scene-select"
+    alias cddevv1="cd /g/data/u46/users/dsg547/devmodules/ard-pipeline/devv1/lib/python3.6/site-packages/wagl-5.5.1-py3.6-linux-x86_64.egg/wagl_repo/"
+    export DEA_WORK_ROOT="/g/data/u46/users/dsg547/work"
+
+    if in_login_shell; then
+	# This is where you place things that should only
+	# run when you login. If you'd like to run a
+	# command that displays the status of something, or
+	# load a module, or change directory, this is the
+	# place to put it
+	module use /g/data/u46/users/dsg547/modules/dsg-py
+	module load pbs
+	# cd /scratch/${PROJECT}/${USER}
+
+	#echo "DATACUBE_CONFIG_PATH=${DATACUBE_CONFIG_PATH}"
+	echo "S2 ARD output dir: cd /g/data/if87/datacube/002/S2_MSI_ARD/packaged/"
+	echo "C3 ARD working dir: cd /g/data/v10/work/c3_ard/"
+    fi
 fi
 
 if [[ ! -S ~/.ssh/ssh_auth_sock && -S "$SSH_AUTH_SOCK" ]]; then
