@@ -17,7 +17,7 @@ DESTDIR=$SWHOME/bin/miniconda3
 
 echo $DESTDIR
 echo $TMPDIR
-exit 1
+# exit 1
 
 if [[ -d $DESTDIR ]]; then
     echo "Conda already seems to be installed, exiting"
