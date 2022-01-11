@@ -191,6 +191,11 @@ if [[ `hostname` =~ vdi ]]; then
     export PIP_DOWNLOAD_CACHE=$TMPDIR/pipcache
     mkdir -p $PIP_DOWNLOAD_CACHE
 fi
+
+if [[ `hostname` =~ gadi ]] && in_interactive_shell; then
+    echo IN
+fi
+
 if [[ ! -S ~/.ssh/ssh_auth_sock && -S "$SSH_AUTH_SOCK" ]]; then
     ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
 fi
