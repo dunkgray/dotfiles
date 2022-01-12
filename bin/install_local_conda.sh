@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -xeu
 
 if [[ ! -d $TMPDIR ]]; then
     if [[ -d "/tmp" ]]; then
@@ -37,9 +37,11 @@ eval "$__conda_setup"
 
 conda update -n base -y conda
 
-conda create --name dsg -y python=3.8 psycopg2 click gdal<3 proj4<6 jupyterlab nodejs \
-    rasterio xarray pyyaml dask boltons netcdf4 lark-parser pypeg2 cachetools \
-    singledispatch sqlalchemy structlog scipy \
-    cattrs ciso8601 h5py pyproj ruamel.yaml shapely scikit-image \
-    deepdiff flake8 pep8-naming python-rapidjson rio-cogeo numexpr \
-    pytest black
+conda create -n odc2020 -c conda-forge python=3.8 datacube pre_commit \
+      structlog black pre_commit pytest \
+      flake8 pep8-naming python-rapidjson numexpr requests pandoc \
+      ruamel ruamel.yaml \
+      croniter feedparser lxml
+
+# conda install
+conda init bash
