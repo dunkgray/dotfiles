@@ -37,7 +37,8 @@ eval "$__conda_setup"
 
 conda update -n base -y conda
 
-conda create -n odc2020 -c conda-forge python=3.8 datacube pre_commit \
+# If this is nodified it has to be tested. It can abort with conflicts.
+conda create -n odc2020 -y -c conda-forge python=3.8 datacube pre_commit \
       structlog black pre_commit pytest \
       flake8 pep8-naming python-rapidjson numexpr requests pandoc \
       ruamel ruamel.yaml \
