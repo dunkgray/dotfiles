@@ -255,13 +255,12 @@ fi
 
 # adding to PATH
 
-# shouldnt need this
-#SWHOME=$HOME
-#if [[ `hostname` =~ gadi ]]; then
-#   SWHOME=/g/data/u46/users/$USER
-#fi
-#DESTDIR=$SWHOME/bin/miniconda3/bin
-#export PATH=$DESTDIR:$PATH
+SWHOME=$HOME
+if [[ `hostname` =~ gadi ]]; then
+   SWHOME=/g/data/u46/users/$USER
+fi
+DESTDIR=$SWHOME/bin/miniconda3/bin
+export PATH=$DESTDIR:$PATH
 
 # ODC
 dc-dump-product () {

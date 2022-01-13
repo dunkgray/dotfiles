@@ -30,6 +30,12 @@ alias grep="grep $grep_options"
 alias dos2unix='sed "s/$//"'
 
 # ------------------------------------------------------------------------------
+# dsg
+# ------------------------------------------------------------------------------
+alias gadi='ssh -Y dsg547@gadi.nci.org.au'
+alias awsnemo='ssh  -i ~/.ssh/id_rsa_nci_cron_ec2 ec2-user@ec2-52-62-73-33.ap-southeast-2.compute.amazonaws.com'
+
+# ------------------------------------------------------------------------------
 # bash
 # ------------------------------------------------------------------------------
 alias ll='ls -l'
@@ -45,12 +51,6 @@ alias sbr='source ~/.bashrc'
 alias inst='sudo apt-get install'
 alias uu='sudo apt-get update && sudo apt-get upgrade'
 alias sc='sudo apt-get autoremove'
-
-# ------------------------------------------------------------------------------
-# ssh
-# ------------------------------------------------------------------------------
-alias gadi='ssh -Y dsg547@gadi.nci.org.au'
-alias awsnemo='ssh  -i ~/.ssh/id_rsa_nci_cron_ec2 ec2-user@ec2-52-62-73-33.ap-southeast-2.compute.amazonaws.com'
 
 # ------------------------------------------------------------------------------
 # git
