@@ -259,8 +259,17 @@ SWHOME=$HOME
 if [[ `hostname` =~ gadi ]]; then
    SWHOME=/g/data/u46/users/$USER
 fi
-DESTDIR=$SWHOME/bin/miniconda3/bin
-export PATH=$DESTDIR:$PATH
+
+# conda init bash # is a better install 
+#DESTDIR=$SWHOME/bin/miniconda3/bin
+#export PATH=$DESTDIR:$PATH
+
+SANDBOX=$SWHOME/sandbox
+export SANDBOX
+
+# for  https://github.com/webinstall/webi-installers
+# shfmt
+export PATH=$HOME/.local/bin:$PATH
 
 # ODC
 dc-dump-product () {
@@ -279,3 +288,23 @@ EOF
 dc-index-eo3 () {
     fd odc-metadata.yaml $1 | tar cvf - --files-from=-  | dc-index-from-tar -E dsg547 --eo3 --ignore-lineage --protocol file -
 }
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/duncan/bin/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/duncan/bin/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/duncan/bin/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/duncan/bin/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
