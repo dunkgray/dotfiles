@@ -42,7 +42,7 @@ alias ll='ls -l'
 alias la='ls -la'
 alias lr='ls -lacr'
 alias ld='ls -ld .*'
-alias gh='history | grep'
+alias hg='history | grep'
 alias sbr='source ~/.bashrc'
 
 # ------------------------------------------------------------------------------
