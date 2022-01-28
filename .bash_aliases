@@ -44,6 +44,7 @@ alias lr='ls -lacr'
 alias ld='ls -ld .*'
 alias hg='history | grep'
 alias sbr='source ~/.bashrc'
+alias lcd='cd $(ls -cr | tail -n 1 )'
 
 # ------------------------------------------------------------------------------
 # apt-get
