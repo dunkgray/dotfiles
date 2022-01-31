@@ -43,6 +43,7 @@ alias la='ls -la'
 alias lr='ls -lacr'
 alias ld='ls -ld .*'
 alias hg='history | grep'
+alias ag='alias | grep'
 alias sbr='source ~/.bashrc'
 alias lcd='cd $(ls -cr | tail -n 1 )'
 
