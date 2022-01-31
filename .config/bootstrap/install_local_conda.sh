@@ -41,4 +41,5 @@ conda update -n base -y conda
 # conda install
 conda init bash
 
+# Look for this in $HOME/bin/
 ./conda_create_odc2020
