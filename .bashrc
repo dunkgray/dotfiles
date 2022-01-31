@@ -256,7 +256,7 @@ fi
 # adding to PATH
 
 SWHOME=$HOME
-if [[ `hostname` =~ gadi ]]; then
+if [[ `hostname` =~ gadi ]] || [[ `hostname` =~ vdi ]]; then
    SWHOME=/g/data/u46/users/$USER
 fi
 
