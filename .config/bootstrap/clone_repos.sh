@@ -3,11 +3,8 @@
 set -xeu
 
 echo $PATH
-#conda activate dea2020
-#exit 1
 
-
-# .bashrc should define $SANDBOX
+# $SANDBOX defined in .bashrd
 mkdir -p  $SANDBOX/
 
 CURR=$PWD
@@ -28,20 +25,16 @@ git clone git@github.com:GeoscienceAustralia/dea-ard-scene-select.git $SANDBOX/d
 git clone git@bitbucket.org:geoscienceaustralia/usgsdownloader.git $SANDBOX/usgsdownloader
 git clone git@bitbucket.org:geoscienceaustralia/eo-integration-tests.git $SANDBOX/eo-integration-tests
 
-# 
-git clone git@bitbucket.org:geoscienceaustralia/landsat-downloader.git $SANDBOX/landsat-downloader
-cd $SANDBOX/landsat-downloader
-pre-commit install
+DESTDIR=$SANDBOX/landsat-downloader
+if [[ ! -d $DESTDIR ]]; then
+    git clone git@bitbucket.org:geoscienceaustralia/landsat-downloader.git $DESTDIR
+    cd $DESTDIR
+    pre-commit install
+fi
 
-cd $CURR
-
-# Assumes conda dea2020 has been setup
-# and jams the dea repo's into the same environment
 #conda activate dea2020
-
 # pip -e and conda do not always play well together
 #pip install --user -e $SANDBOX/dea-ard-scene-select
-
 
 git clone git@github.com:GeoscienceAustralia/eo-datasets.git $SANDBOX/eo-datasets
 cd $SANDBOX/eo-datasets
@@ -52,15 +45,16 @@ pre-commit install
 
 # Actually don't run this at NCI, since pre-commit install doesn't work
 if [[ `hostname` =~ gadi ]] || [[ `hostname` =~ vdi ]]; then
+    git clone git@github.com:GeoscienceAustralia/dea-config.git  $SANDBOX/dea-config
     git clone git@github.com:dunkgray/processingDEA.git $SANDBOX/processingDEA
 
     git clone git@github.com:GeoscienceAustralia/digitalearthau.git  $SANDBOX/digitalearthau
     cd $SANDBOX/digitalearthau
     #pre-commit install
 
-    git clone git@github.com:GeoscienceAustralia/dea-config.git  $SANDBOX/dea-config
 fi
 
+cd $CURR
 
 #git clone git@github.com:opendatacube/datacube-core.git  $SANDBOX/datacube-core
 #cd $SANDBOX/datacube-core
