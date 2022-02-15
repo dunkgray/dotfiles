@@ -21,6 +21,7 @@ if [[ ! -d $DESTDIR ]]; then
 fi
 
 # assumes keys in bitbucket and github.
+# bad h5py is breaking dea-ard-scene-select in ubuntu
 git clone git@github.com:GeoscienceAustralia/dea-ard-scene-select.git $SANDBOX/dea-ard-scene-select
 git clone git@bitbucket.org:geoscienceaustralia/usgsdownloader.git $SANDBOX/usgsdownloader
 git clone git@bitbucket.org:geoscienceaustralia/eo-integration-tests.git $SANDBOX/eo-integration-tests

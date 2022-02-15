@@ -34,6 +34,7 @@ alias dos2unix='sed "s/$//"'
 # ------------------------------------------------------------------------------
 alias gadi='ssh -Y dsg547@gadi.nci.org.au'
 alias awsnemo='ssh  -i ~/.ssh/id_rsa_nci_cron_ec2 ec2-user@ec2-52-62-73-33.ap-southeast-2.compute.amazonaws.com'
+alias ebsnemo='ssh -X -i ~/.ssh/landsat-nrt-downloader.pem ec2-user@ec2-54-66-3-83.ap-southeast-2.compute.amazonaws.com'
 
 # ------------------------------------------------------------------------------
 # bash
@@ -41,6 +42,7 @@ alias awsnemo='ssh  -i ~/.ssh/id_rsa_nci_cron_ec2 ec2-user@ec2-52-62-73-33.ap-so
 alias ll='ls -l'
 alias la='ls -la'
 alias lr='ls -lacr'
+alias lt='ls -latr'
 alias ld='ls -ld .*'
 alias hg='history | grep'
 alias ag='alias | grep'
