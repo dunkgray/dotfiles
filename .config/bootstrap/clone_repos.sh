@@ -25,6 +25,8 @@ fi
 git clone git@github.com:GeoscienceAustralia/dea-ard-scene-select.git $SANDBOX/dea-ard-scene-select
 git clone git@bitbucket.org:geoscienceaustralia/usgsdownloader.git $SANDBOX/usgsdownloader
 git clone git@bitbucket.org:geoscienceaustralia/eo-integration-tests.git $SANDBOX/eo-integration-tests
+git clone git@github.com:dunkgray/processingDEA.git $SANDBOX/processingDEA
+
 
 DESTDIR=$SANDBOX/landsat-downloader
 if [[ ! -d $DESTDIR ]]; then
@@ -47,8 +49,6 @@ pre-commit install
 # Actually don't run this at NCI, since pre-commit install doesn't work
 if [[ `hostname` =~ gadi ]] || [[ `hostname` =~ vdi ]]; then
     git clone git@github.com:GeoscienceAustralia/dea-config.git  $SANDBOX/dea-config
-    git clone git@github.com:dunkgray/processingDEA.git $SANDBOX/processingDEA
-
     git clone git@github.com:GeoscienceAustralia/digitalearthau.git  $SANDBOX/digitalearthau
     cd $SANDBOX/digitalearthau
     #pre-commit install
