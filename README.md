@@ -1,4 +1,7 @@
 # dotfiles
+[This README.md is for https://github.com/dunkgray/dotfiles/edit/master/README.md
+It will be added to all yadm systems. Oh well.]
+
 This is a yamd repo https://yadm.io/#
 
 Here are some helpful aliasis
