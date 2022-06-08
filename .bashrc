@@ -216,6 +216,7 @@ if [[ `hostname` =~ gadi ]] && in_interactive_shell; then
 
     alias cdsand="cd /g/data/u46/users/dsg547/sandbox/"
     alias cds2p="cd /g/data/u46/users/dsg547/sandbox/processingDEA/s2_pipeline"
+    alias cds2m="cd /g/data/u46/users/dsg547/sandbox/dea-manual-production/s2_c3"
     alias cdpldev="cd /g/data/u46/users/dsg547/sandbox/processingDEA/ls_c3_ard_testing/devdb"
     alias cdqa="cd /g/data/u46/users/dsg547/c3_ard_qa"
     alias cdss="cd /g/data/u46/users/dsg547/sandbox/dea-ard-scene-select"
