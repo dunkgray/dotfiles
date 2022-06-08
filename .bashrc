@@ -210,6 +210,10 @@ if [[ `hostname` =~ gadi ]] && in_interactive_shell; then
     export LC_ALL=en_AU.UTF-8
     export LANG=en_AU.UTF-8
 
+    # This is to avoid mesa loader errors when
+    # ssh'ed in from my ideapad laptop
+    export MESA_LOADER_DRIVER_OVERRIDE=i965
+
     alias cdsand="cd /g/data/u46/users/dsg547/sandbox/"
     alias cdpldev="cd /g/data/u46/users/dsg547/sandbox/processingDEA/ls_c3_ard_testing/devdb"
     alias cdqa="cd /g/data/u46/users/dsg547/c3_ard_qa"
