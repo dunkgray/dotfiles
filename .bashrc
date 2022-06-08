@@ -215,6 +215,7 @@ if [[ `hostname` =~ gadi ]] && in_interactive_shell; then
     export MESA_LOADER_DRIVER_OVERRIDE=i965
 
     alias cdsand="cd /g/data/u46/users/dsg547/sandbox/"
+    alias cds2p="cd /g/data/u46/users/dsg547/sandbox/processingDEA/s2_pipeline"
     alias cdpldev="cd /g/data/u46/users/dsg547/sandbox/processingDEA/ls_c3_ard_testing/devdb"
     alias cdqa="cd /g/data/u46/users/dsg547/c3_ard_qa"
     alias cdss="cd /g/data/u46/users/dsg547/sandbox/dea-ard-scene-select"
