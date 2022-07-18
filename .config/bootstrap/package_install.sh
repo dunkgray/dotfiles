@@ -32,6 +32,9 @@ sudo apt-get install shellcheck -y
 # for ard_pipeline and scene select
 sudo apt-get install libhdf5-dev -y
 
+# for reading ard processing log files
+sudo apt-get install jq -y
+
 if [[ $(grep microsoft /proc/version) ]]; then
 #     echo "Bash is running on WSL"
 #     # a hack to get snap to work.  That did not work
