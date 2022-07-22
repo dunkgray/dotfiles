@@ -25,6 +25,7 @@ sudo apt-get install libpq-dev -y
 sudo apt-get install ntp -y
 sudo apt-get install curl -y
 sudo apt-get install postgresql postgresql-contrib pgadmin3 -y
+sudo apt-get install yamllint -y
 
 # for  pre-commit
 sudo apt-get install shellcheck -y
