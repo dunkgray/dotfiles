@@ -234,8 +234,10 @@ if [[ `hostname` =~ gadi ]] && in_interactive_shell; then
 	# cd /scratch/${PROJECT}/${USER}
 
 	#echo "DATACUBE_CONFIG_PATH=${DATACUBE_CONFIG_PATH}"
-	echo "S2 ARD output dir: cd /g/data/if87/datacube/002/S2_MSI_ARD/packaged/"
-	echo "C3 ARD working dir: cd /g/data/v10/work/c3_ard/"
+	echo "C3 ARD working dir: cd /g/data/v10/work/ls_c3_ard/"
+	echo "C3 ARD working dir: cd /g/data/v10/work/s2_c3_ard/"
+	echo "wc -l /g/data/v10/work/s2_c3_ard/2023*_ard/batchid-*/level-1-final_state-*"
+	echo "wc -l /g/data/v10/work/ls_c3_ard/logdir/202303*/batchid-*/level-1-final_state-*"
     fi
 fi
 
