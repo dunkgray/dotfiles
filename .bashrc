@@ -236,7 +236,7 @@ if [[ `hostname` =~ gadi ]] && in_interactive_shell; then
 	#echo "DATACUBE_CONFIG_PATH=${DATACUBE_CONFIG_PATH}"
 	echo "C3 ARD working dir: cd /g/data/v10/work/ls_c3_ard/"
 	echo "C3 ARD working dir: cd /g/data/v10/work/s2_c3_ard/"
-	echo "wc -l /g/data/v10/work/s2_c3_ard/2023$(date +%m)*_ard/batchid-*/level-1-final_state-*"
+	echo "wc -l /g/data/v10/work/s2_c3_ard/logdir/2023$(date +%m)*_ard/batchid-*/level-1-final_state-*"
 	echo "wc -l /g/data/v10/work/ls_c3_ard/logdir/2023$(date +%m)*/batchid-*/level-1-final_state-*"
     fi
 fi
