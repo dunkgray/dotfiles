@@ -1,11 +1,13 @@
 #!/bin/bash
 
+# This is untested ard2023 works
 # datacube==1.8.6 due to latest version of ODC prob' needs shapely 2.0
 # And that isn't installed.
 # datacube==1.8.9 should work too
 # If this is modified it has to be tested. It can abort with conflicts.
-mamba create -n ard2023 -y -c conda-forge python=3.8\
-      datacube==1.8.6 \
+mamba create -n dea2023 -y -c conda-forge python=3.8\
+      datacube \
+      shapely==2 \
       pre_commit \
       structlog \
       black \
