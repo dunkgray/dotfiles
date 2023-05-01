@@ -59,4 +59,10 @@ curl -sS https://webinstall.dev/fzf | bash
 # Install Pycharm
 #sudo snap install pycharm-professional --classic
 
+# From https://bitbucket.org/geoscienceaustralia/dea-dev-box/src/master/infrastructure/userdata.sh
+# Install Conda/Mamba
+# Not tested yet, for running from this script
 
+curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
+bash Mambaforge-$(uname)-$(uname -m).sh -b
+~/mambaforge/bin/mamba init # this will edit the .bashrc file.
