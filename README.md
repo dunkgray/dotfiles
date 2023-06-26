@@ -12,6 +12,7 @@ ssh -T git@github.com  #  check github connection
 sudo apt-get install yadm -y
 yadm clone git@github.com:dunkgray/dotfiles.git
 ```
+Manually run the scripts in `~/.config/bootstrap`
 
 Here are some helpful aliasis
 ```
