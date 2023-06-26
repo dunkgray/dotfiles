@@ -51,7 +51,9 @@ if [[ $(grep microsoft /proc/version) ]]; then
     
     curl -sS https://webinstall.dev/shfmt | bash
 else
+    sudo apt-get install snapd -y
     sudo snap install shfmt
+    sudo snap install pre-commit --classic
 fi
 
 curl -sS https://webinstall.dev/fzf | bash
