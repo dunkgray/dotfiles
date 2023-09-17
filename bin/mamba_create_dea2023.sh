@@ -5,7 +5,7 @@
 # And that isn't installed.
 # datacube==1.8.9 should work too
 # If this is modified it has to be tested. It can abort with conflicts.
-mamba create -n dea2023 -y -c conda-forge python=3.8\
+mamba create -n dea2023 -y -c conda-forge python=3.10\
       datacube \
       shapely==2 \
       pre_commit \
@@ -25,4 +25,5 @@ mamba create -n dea2023 -y -c conda-forge python=3.8\
       lxml \
       h5py \
       hdf5plugin \
+      pytables \
       hdf5-external-filter-plugins-bitshuffle

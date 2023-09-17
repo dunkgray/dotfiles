@@ -33,6 +33,7 @@ sudo apt-get install shellcheck -y
 
 # for ard_pipeline and scene select
 sudo apt-get install libhdf5-dev -y
+pip install pytest-odc
 
 # for reading ard processing log files
 sudo apt-get install jq -y
