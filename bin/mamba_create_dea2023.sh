@@ -27,5 +27,6 @@ mamba create -n dea2023 -y -c conda-forge python=3.10\
       hdf5plugin \
       pytables \
       hdf5-external-filter-plugins-bitshuffle
-conda activate dea2023
-pip install pytest-odc
+      # pytest-odc \ doesn't exist
+
+python3.10 -m pip install pytest-odc
