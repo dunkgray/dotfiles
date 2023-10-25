@@ -27,6 +27,7 @@ sudo apt-get install curl -y
 sudo apt-get install postgresql postgresql-contrib pgadmin3 -y
 sudo apt-get install yamllint -y
 sudo apt-get install csvkit -y
+sudo apt install jupyter-core -y
 
 # for  pre-commit
 sudo apt-get install shellcheck -y
