@@ -26,6 +26,7 @@ mamba create -n dea2023 -y -c conda-forge python=3.10\
       h5py \
       hdf5plugin \
       pytables \
+      jupyter \
       hdf5-external-filter-plugins-bitshuffle
       # pytest-odc \ doesn't exist
 
