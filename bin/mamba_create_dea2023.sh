@@ -30,4 +30,4 @@ mamba create -n dea2023 -y -c conda-forge python=3.10\
       hdf5-external-filter-plugins-bitshuffle
       # pytest-odc \ doesn't exist
 
-python3.10 -m pip install pytest-odc
+python3 -m pip install pytest-odc
